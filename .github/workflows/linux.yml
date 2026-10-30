@@ -40,8 +40,7 @@ jobs:
         if: always()
         run: |
           mkdir -p dist/dafeiyu-linux/lib
-          find /usr/lib/swift/linux -name "*.so*" -exec cp -L {} dist/dafeiyu-linux/lib/ \;
-          cp -L $(ldd dist/dafeiyu-linux/dafeiyu | grep -o '/[^ ]*') dist/dafeiyu-linux/lib/ || true
+          cp -L /usr/lib/swift/linux/*.so* dist/dafeiyu-linux/lib/ || true
       - name: Upload Linux build
         if: always()
         uses: actions/upload-artifact@v4
