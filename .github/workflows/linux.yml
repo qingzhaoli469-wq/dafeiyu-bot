@@ -37,6 +37,7 @@ jobs:
       - name: Real synthetic OneBot WebSocket transport
         run: python3 scripts/test-onebot-transport.py dist/dafeiyu-linux/dafeiyu
       - name: Upload Linux build
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: dafeiyu-linux
