@@ -37,6 +37,7 @@ jobs:
       - name: Real synthetic OneBot WebSocket transport
         run: python3 scripts/test-onebot-transport.py dist/dafeiyu-linux/dafeiyu
       - name: Bundle Swift libraries
+        if: always()
         run: |
           mkdir -p dist/dafeiyu-linux/lib
           find /usr/lib/swift/linux -name "*.so*" -exec cp -L {} dist/dafeiyu-linux/lib/ \;
