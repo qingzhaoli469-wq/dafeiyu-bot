@@ -11,7 +11,7 @@ jobs:
       DAFEIYU_BUILD_JOBS: 2
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v7.1.0
+      - uses: actions/setup-node@v4
         with:
           node-version: '24'
       - name: Resolve the checked-out container workspace
@@ -36,3 +36,9 @@ jobs:
         run: python3 scripts/test-control-panel.py scripts/start-linux.sh --shell-launcher
       - name: Real synthetic OneBot WebSocket transport
         run: python3 scripts/test-onebot-transport.py dist/dafeiyu-linux/dafeiyu
+      - name: Upload Linux build
+        uses: actions/upload-artifact@v4
+        with:
+          name: dafeiyu-linux
+          path: dist/dafeiyu-linux/
+          retention-days: 7
