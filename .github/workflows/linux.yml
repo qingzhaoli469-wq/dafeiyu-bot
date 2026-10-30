@@ -1,3 +1,4 @@
+
 name: Linux and Windows WSL engine
 
 on: [push, pull_request]
@@ -25,7 +26,8 @@ jobs:
       - name: Image and test dependencies
         run: |
           apt-get update
-          apt-get install -y python3 python3-pil patchelf
+          apt-get install -y python3 python3-pil patchelf xz-utils
+          xz --version
       - name: Privacy check
         run: python3 scripts/check-public.py
       - name: Verify OneBot transport before integration cases
